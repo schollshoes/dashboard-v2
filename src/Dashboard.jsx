@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+  import { useState, useMemo } from "react";
 import {
   BarChart, Bar, LineChart, Line, XAxis, YAxis, CartesianGrid,
   Tooltip, ResponsiveContainer, PieChart, Pie, Cell, ComposedChart, Legend
@@ -243,7 +243,7 @@ export default function Dashboard() {
   return (
     <div style={{background:"#020817",minHeight:"100vh",padding:"20px",fontFamily:"'Inter',system-ui,sans-serif",color:"#f1f5f9"}}>
 
-      {/* HEADER */}
+      
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"flex-start",marginBottom:16,flexWrap:"wrap",gap:10}}>
         <div>
           <div style={{fontSize:10,fontWeight:700,color:"#3b82f6",letterSpacing:"0.15em",textTransform:"uppercase",marginBottom:2}}>Top Management · Performance Report</div>
@@ -253,7 +253,7 @@ export default function Dashboard() {
           </p>
         </div>
         <div style={{display:"flex",gap:12,flexWrap:"wrap",justifyContent:"flex-end",alignItems:"flex-start"}}>
-          {/* Sito Diretto */}
+          
           <div style={{display:"flex",flexDirection:"column",gap:5,alignItems:"flex-end"}}>
             <div style={{fontSize:9,fontWeight:700,color:"#3b82f6",letterSpacing:"0.12em",textTransform:"uppercase"}}>🌐 Sito Diretto</div>
             <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
@@ -266,7 +266,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* FILTRO PERIODO GLOBALE */}
+      
       <div style={{...card,marginBottom:14,padding:"12px 16px"}}>
         <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
           <span style={{color:"#475569",fontSize:11,fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase",whiteSpace:"nowrap"}}>Filtra per</span>
@@ -286,7 +286,7 @@ export default function Dashboard() {
         </div>
       </div>
 
-      {/* KPI CARDS — solo Sito Diretto */}
+      
       <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(130px,1fr))",gap:8,marginBottom:14}}>
         {[
           {label:"Fatturato Lordo", v26:fmt(kpi.gross26),    v25:fmt(kpi.gross25),    delta:pct(kpi.gross26,kpi.gross25)},
@@ -307,7 +307,7 @@ export default function Dashboard() {
         ))}
       </div>}
 
-      {/* ── VENDITE ──────────────────────────────────────────────────────────── */}
+      
       {section==="overview" && <>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:12}}>
           <div style={card}>
@@ -376,7 +376,7 @@ export default function Dashboard() {
         </div>
       </>}
 
-      {/* ── TRAFFICO & CVR ─────────────────────────────────────────────────── */}
+      
       {section==="traffic" && <>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:12}}>
           <div style={card}>
@@ -423,7 +423,7 @@ export default function Dashboard() {
         </div>
       </>}
 
-      {/* ── CANALI ───────────────────────────────────────────────────────────── */}
+      
       {section==="channels" && <>
         <div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:12,marginBottom:12}}>
           {[{year:"2026",data:chData.pie26},{year:"2025",data:chData.pie25}].map(({year,data})=>(
@@ -456,7 +456,7 @@ export default function Dashboard() {
         </div>
       </>}
 
-      {/* ── PRODOTTI ─────────────────────────────────────────────────────────── */}
+      
       {section==="products" && (()=>{
         const curP = prodDataP;
         const curS = prodDataS;
@@ -469,7 +469,7 @@ export default function Dashboard() {
         };
 
         return <>
-          {/* KPI mini cards */}
+          
           <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(140px,1fr))",gap:8,marginBottom:12}}>
             {[
               {label:"Prodotti distinti",value:curP.length,         sub:`top ${(PD[period]||PD["all"]).p.length} per periodo`,color:"#f1f5f9"},
@@ -487,7 +487,7 @@ export default function Dashboard() {
             ))}
           </div>
 
-          {/* Tabella performance per stagione */}
+          
           {(()=>{
             const seasonOrder=["AW26","SS26","AW25","SS25","AW24","SS24","AW23","N/A"];
             const bySeasonMap={};
@@ -581,7 +581,7 @@ export default function Dashboard() {
             );
           })()}
 
-          {/* Grafico top prodotti */}
+          
           <div style={{...card,marginBottom:12}}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12,flexWrap:"wrap",gap:8}}>
               <div style={{fontSize:12,fontWeight:700,color:"#f1f5f9"}}>Top 15 prodotti — qty venduta YoY</div>
@@ -599,11 +599,11 @@ export default function Dashboard() {
             </ResponsiveContainer>
           </div>
 
-          {/* Tabelle con sub-tab */}
+          
           <div style={card}>
-            {/* Header con sub-tab + controlli */}
+            
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:14,flexWrap:"wrap",gap:8}}>
-              {/* Sub-tab */}
+              
               <div style={{display:"flex",gap:0,background:"#020817",borderRadius:9,padding:3,border:"1px solid #1e293b"}}>
                 {[["product","Per Prodotto"],["sku","Per SKU"]].map(([v,l])=>(
                   <button key={v} onClick={()=>setProdTab(v)} style={{padding:"5px 14px",borderRadius:7,border:"none",cursor:"pointer",fontSize:11,fontWeight:700,
@@ -615,7 +615,7 @@ export default function Dashboard() {
                   </button>
                 ))}
               </div>
-              {/* Ricerca + ordinamento */}
+              
               <div style={{display:"flex",gap:6,alignItems:"center",flexWrap:"wrap"}}>
                 <input value={prodSearch} onChange={e=>setProdSearch(e.target.value)} placeholder="Cerca…"
                   style={{background:"#1e293b",border:"1px solid #334155",borderRadius:7,padding:"4px 9px",color:"#f1f5f9",fontSize:11,width:120,outline:"none"}}/>
@@ -626,7 +626,7 @@ export default function Dashboard() {
               </div>
             </div>
 
-            {/* ── TABELLA PER PRODOTTO ── */}
+            
             {prodTab==="product" && (
               <div style={{overflowX:"auto"}}>
                 <table style={{width:"100%",borderCollapse:"collapse",fontSize:11,whiteSpace:"nowrap"}}>
@@ -657,7 +657,7 @@ export default function Dashboard() {
               </div>
             )}
 
-            {/* ── TABELLA PER SKU ── */}
+            
             {prodTab==="sku" && (
               <div style={{overflowX:"auto"}}>
                 <table style={{width:"100%",borderCollapse:"collapse",fontSize:11,whiteSpace:"nowrap"}}>
