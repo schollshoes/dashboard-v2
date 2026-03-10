@@ -215,10 +215,7 @@ export default function Dashboard() {
       return 0;
     });
   },[period,prodSearch,prodSort]);
-
-  
-  const card  = {background:"#0f172a",border:"1px solid #1e293b",borderRadius:14,padding:"18px 20px"};
-  const secBt = (a, color="#3b82f6") => {
+const secBt = (a, color="#3b82f6") => {
     const bg = color==="#f59e0b" ? "#1a1200" : "#1e3a5f";
     const tc = color==="#f59e0b" ? "#fcd34d" : "#93c5fd";
     return {padding:"7px 14px",borderRadius:8,border:`1px solid ${a?color:"#1e293b"}`,cursor:"pointer",fontSize:12,fontWeight:600,background:a?bg:"transparent",color:a?tc:"#64748b"};
@@ -262,7 +259,7 @@ export default function Dashboard() {
       </div>
 
       
-      <div style={{...card,marginBottom:14,padding:"12px 16px"}}>
+      <div style={{background:"#0f172a",borderRadius:12,padding:"12px 16px",marginBottom:14,border:"1px solid #1e293b"}}>
         <div style={{display:"flex",alignItems:"center",gap:8,flexWrap:"wrap"}}>
           <span style={{color:"#475569",fontSize:11,fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase",whiteSpace:"nowrap"}}>Filtra per</span>
           <div style={{display:"flex",gap:4,flexWrap:"wrap"}}>
@@ -291,7 +288,7 @@ export default function Dashboard() {
           {label:"CVR",             v26:`${kpi.cvr26}%`,      v25:`${kpi.cvr25}%`,      delta:pct(kpi.cvr26,kpi.cvr25)},
           {label:"Tasso Resi",      v26:`${kpi.retRate26}%`,  v25:`${kpi.retRate25}%`,  delta:pct(kpi.retRate26,kpi.retRate25),inv:true},
         ].map((c,i)=>(
-          <div key={i} style={{...card,padding:"12px 14px"}}>
+          <div key={i} style={{background:"#0f172a",borderRadius:12,padding:"12px 14px",marginBottom:16,border:"1px solid #1e293b"}}>
             <div style={{color:"#475569",fontSize:9,fontWeight:700,letterSpacing:"0.08em",textTransform:"uppercase",marginBottom:4}}>{c.label}</div>
             <div style={{color:"#f1f5f9",fontSize:17,fontWeight:800,lineHeight:1}}>{c.v26}</div>
             <div style={{display:"flex",alignItems:"center",marginTop:4,gap:4}}>
@@ -312,7 +309,7 @@ export default function Dashboard() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false}/>
                 <XAxis dataKey="label" tick={{fill:"#475569",fontSize:10}} axisLine={false} tickLine={false}/>
                 <YAxis tick={{fill:"#475569",fontSize:10}} axisLine={false} tickLine={false} tickFormatter={v=>`€${(v/1000).toFixed(0)}k`} width={42}/>
-                <Tooltip {...tt} formatter={v=>fmt(v)}/>
+                <Tooltip contentStyle={{background:"#1e293b",border:"1px solid #334155",borderRadius:8,fontSize:11}} labelStyle={{color:"#94a3b8"}} formatter={v=>fmt(v)}/>
                 <Bar dataKey="gross26" name="2026" fill="#3b82f6" radius={[3,3,0,0]}/>
                 <Bar dataKey="gross25" name="2025" fill="#f59e0b" radius={[3,3,0,0]} opacity={0.55}/>
               </BarChart>
@@ -325,7 +322,7 @@ export default function Dashboard() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false}/>
                 <XAxis dataKey="label" tick={{fill:"#475569",fontSize:10}} axisLine={false} tickLine={false}/>
                 <YAxis tick={{fill:"#475569",fontSize:10}} axisLine={false} tickLine={false} width={35}/>
-                <Tooltip {...tt}/>
+                <Tooltip contentStyle={{background:"#1e293b",border:"1px solid #334155",borderRadius:8,fontSize:11}} labelStyle={{color:"#94a3b8"}}/>
                 <Bar dataKey="orders26" name="2026" fill="#10b981" radius={[3,3,0,0]}/>
                 <Bar dataKey="orders25" name="2025" fill="#f59e0b" radius={[3,3,0,0]} opacity={0.55}/>
               </BarChart>
@@ -381,7 +378,7 @@ export default function Dashboard() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false}/>
                 <XAxis dataKey="label" tick={{fill:"#475569",fontSize:10}} axisLine={false} tickLine={false}/>
                 <YAxis tick={{fill:"#475569",fontSize:10}} axisLine={false} tickLine={false} tickFormatter={v=>`${(v/1000).toFixed(0)}k`} width={35}/>
-                <Tooltip {...tt} formatter={v=>fmtN(v)}/>
+                <Tooltip contentStyle={{background:"#1e293b",border:"1px solid #334155",borderRadius:8,fontSize:11}} labelStyle={{color:"#94a3b8"}} formatter={v=>fmtN(v)}/>
                 <Bar dataKey="sessions26" name="2026" fill="#3b82f6" radius={[3,3,0,0]}/>
                 <Bar dataKey="sessions25" name="2025" fill="#f59e0b" radius={[3,3,0,0]} opacity={0.55}/>
               </BarChart>
@@ -394,7 +391,7 @@ export default function Dashboard() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false}/>
                 <XAxis dataKey="label" tick={{fill:"#475569",fontSize:10}} axisLine={false} tickLine={false}/>
                 <YAxis tick={{fill:"#475569",fontSize:10}} axisLine={false} tickLine={false} width={30} tickFormatter={v=>`${v}%`}/>
-                <Tooltip {...tt} formatter={v=>`${v}%`}/>
+                <Tooltip contentStyle={{background:"#1e293b",border:"1px solid #334155",borderRadius:8,fontSize:11}} labelStyle={{color:"#94a3b8"}} formatter={v=>`${v}%`}/>
                 <Line type="monotone" dataKey="cvr26" name="CVR 2026" stroke="#10b981" strokeWidth={2} dot={{r:3,fill:"#10b981"}}/>
                 <Line type="monotone" dataKey="cvr25" name="CVR 2025" stroke="#f59e0b" strokeWidth={2} strokeDasharray="4 3" dot={{r:3,fill:"#f59e0b"}}/>
               </LineChart>
@@ -406,7 +403,7 @@ export default function Dashboard() {
             {label:"CVR medio 2026",value:`${kpi.cvr26}%`,sub:`vs ${kpi.cvr25}% nel 2025`,delta:pct(kpi.cvr26,kpi.cvr25),color:"#10b981"},
             {label:"Sessioni 2026",value:fmtN(kpi.sessions26),sub:`vs ${fmtN(kpi.sessions25)} nel 2025`,delta:pct(kpi.sessions26,kpi.sessions25),color:"#3b82f6"},
           ].map((c,i)=>(
-            <div key={i} style={{...card,display:"flex",flexDirection:"column",gap:6}}>
+            <div key={i} style={{background:"#0f172a",borderRadius:12,padding:"16px",marginBottom:16,border:"1px solid #1e293b",display:"flex",flexDirection:"column",gap:6}}>
               <div style={{color:"#475569",fontSize:10,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.1em"}}>{c.label}</div>
               <div style={{color:c.color,fontSize:28,fontWeight:900}}>{c.value}</div>
               <div style={{display:"flex",alignItems:"center",gap:4}}>
@@ -429,7 +426,7 @@ export default function Dashboard() {
                   <Pie data={data} cx="50%" cy="50%" innerRadius={45} outerRadius={70} dataKey="value" nameKey="name" paddingAngle={2}>
                     {data.map((_,i)=><Cell key={i} fill={PIE_COLORS[i]}/>)}
                   </Pie>
-                  <Tooltip {...tt} formatter={(v,n,p)=>[`${p.payload.pct}% (${fmtN(v)} sess.)`,n]}/>
+                  <Tooltip contentStyle={{background:"#1e293b",border:"1px solid #334155",borderRadius:8,fontSize:11}} labelStyle={{color:"#94a3b8"}} formatter={(v,n,p)=>[`${p.payload.pct}% (${fmtN(v)} sess.)`,n]}/>
                   <Legend iconType="circle" iconSize={8} wrapperStyle={{fontSize:10,paddingTop:8}}/>
                 </PieChart>
               </ResponsiveContainer>
@@ -443,7 +440,7 @@ export default function Dashboard() {
               <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" horizontal={false}/>
               <XAxis type="number" tick={{fill:"#475569",fontSize:10}} axisLine={false} tickLine={false} tickFormatter={v=>`${v}%`}/>
               <YAxis type="category" dataKey="name" tick={{fill:"#94a3b8",fontSize:10}} axisLine={false} tickLine={false} width={90}/>
-              <Tooltip {...tt} formatter={v=>`${v}%`}/>
+              <Tooltip contentStyle={{background:"#1e293b",border:"1px solid #334155",borderRadius:8,fontSize:11}} labelStyle={{color:"#94a3b8"}} formatter={v=>`${v}%`}/>
               <Bar dataKey="pct26" name="2026" fill="#3b82f6" radius={[0,4,4,0]}/>
               <Bar dataKey="pct25" name="2025" fill="#f59e0b" radius={[0,4,4,0]} opacity={0.55}/>
             </BarChart>
@@ -474,7 +471,7 @@ export default function Dashboard() {
               {label:"Resi totali",       value:curS.reduce((s,r)=>s+r.r6,0), sub:`tasso medio ${(curS.length?curS.reduce((s,r)=>s+r.rr6,0)/curS.length:0).toFixed(1)}%`,color:"#f87171"},
               {label:"Prezzo medio",      value:(()=>{const v=curP.filter(r=>r.ap6!=null);return v.length?`€ ${(v.reduce((s,r)=>s+(r.ap6*r.q6),0)/v.reduce((s,r)=>s+r.q6,0)).toFixed(2)}`:"—";})(), sub:"weighted avg per qty",color:"#a78bfa"},
             ].map((c,i)=>(
-              <div key={i} style={{...card,padding:"12px 14px"}}>
+              <div key={i} style={{background:"#0f172a",borderRadius:12,padding:"12px 14px",marginBottom:16,border:"1px solid #1e293b"}}>
                 <div style={{color:"#475569",fontSize:9,fontWeight:700,textTransform:"uppercase",letterSpacing:"0.08em",marginBottom:4}}>{c.label}</div>
                 <div style={{color:c.color,fontSize:20,fontWeight:800}}>{typeof c.value==="number"?c.value.toLocaleString("it-IT"):c.value}</div>
                 <div style={{color:"#334155",fontSize:9,marginTop:2}}>{c.sub}</div>
@@ -501,7 +498,7 @@ export default function Dashboard() {
               return "#34d399";
             };
             return (
-              <div style={{...card,marginBottom:12,overflowX:"auto"}}>
+              <div style={{background:"#0f172a",borderRadius:12,padding:"16px",marginBottom:12,border:"1px solid #1e293b",overflowX:"auto"}}>
                 <div style={{fontSize:12,fontWeight:700,color:"#f1f5f9",marginBottom:10}}>Performance per stagione</div>
                 <table style={{width:"100%",borderCollapse:"collapse",fontSize:11}}>
                   <thead>
@@ -577,7 +574,7 @@ export default function Dashboard() {
           })()}
 
           
-          <div style={{...card,marginBottom:12}}>
+          <div style={{background:"#0f172a",borderRadius:12,padding:"16px",marginBottom:12,border:"1px solid #1e293b"}}>
             <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",marginBottom:12,flexWrap:"wrap",gap:8}}>
               <div style={{fontSize:12,fontWeight:700,color:"#f1f5f9"}}>Top 15 prodotti — qty venduta YoY</div>
               <div style={{display:"flex",gap:8,fontSize:10}}><span style={{color:"#3b82f6"}}>■ 2026</span><span style={{color:"#f59e0b",opacity:0.7}}>■ 2025</span></div>
@@ -587,7 +584,7 @@ export default function Dashboard() {
                 <CartesianGrid strokeDasharray="3 3" stroke="#1e293b" vertical={false}/>
                 <XAxis dataKey="name" tick={{fill:"#475569",fontSize:9}} axisLine={false} tickLine={false}/>
                 <YAxis tick={{fill:"#475569",fontSize:10}} axisLine={false} tickLine={false} width={28}/>
-                <Tooltip {...tt}/>
+                <Tooltip contentStyle={{background:"#1e293b",border:"1px solid #334155",borderRadius:8,fontSize:11}} labelStyle={{color:"#94a3b8"}}/>
                 <Bar dataKey="q6" name="Qty 2026" fill="#3b82f6" radius={[3,3,0,0]}/>
                 <Bar dataKey="q5" name="Qty 2025" fill="#f59e0b" radius={[3,3,0,0]} opacity={0.6}/>
               </BarChart>
